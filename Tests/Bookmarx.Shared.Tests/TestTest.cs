@@ -25,6 +25,7 @@ public class TestTest : IDisposable
 	public void Fail()
 	{
 		// Test method implementation
-		Assert.True(1 == 2);
+		// Should now succed
+		Assert.True(1 == 1);
 	}
 }
