@@ -1,10 +1,10 @@
 ﻿using Xunit;
 
-namespace Bookmarx.Shared.Tests;
+namespace Bookmarx.Tests.Shared;
 
-public class TestTest : IDisposable
+public class DummyTest : IDisposable
 {
-	public TestTest()
+	public DummyTest()
 	{
 		// Do some setup
 	}
@@ -15,17 +15,17 @@ public class TestTest : IDisposable
 	}
 
 	[Fact]
-	public void Succeed()
-	{
-		// Test method implementation
-		Assert.True(1 == 1);
-	}
-
-	[Fact]
 	public void Fail()
 	{
 		// Test method implementation
 		// Should now succed
+		Assert.True(1 == 1);
+	}
+
+	[Fact]
+	public void Succeed()
+	{
+		// Test method implementation
 		Assert.True(1 == 1);
 	}
 }
