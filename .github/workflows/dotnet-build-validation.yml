@@ -23,7 +23,7 @@ jobs:
         run: dotnet restore ./Bookmarx.API/Bookmarx.API.sln
         working-directory: ./
       - name: Build
-        run: dotnet build --no-restore **/*.csproj
+        run: dotnet build ./Bookmarx.API/Bookmarx.API.sln
         working-directory: ./
       - name: Test
         run: dotnet test ./Tests/*/*.csproj --no-build --verbosity normal
