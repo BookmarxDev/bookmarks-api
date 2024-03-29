@@ -12,6 +12,7 @@ public class TestController : ControllerBase
 	[Route("hello")]
 	public IActionResult Get()
 	{
+		SentrySdk.CaptureMessage("Hello Sentry");
 		return Ok("Hello world!");
 	}
 }
