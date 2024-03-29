@@ -12,9 +12,5 @@ public class IdentityBaseResponseDto
     /// </summary>
     public bool IsSubscriptionValid { get; set; } = false;
 
-    /// <summary>
-    /// Obfuscating this a bit, but this actually returns the
-    /// new Account Guid of the created or updated record.
-    /// </summary>
     public string MemberAccountID { get; set; } = string.Empty;
 }

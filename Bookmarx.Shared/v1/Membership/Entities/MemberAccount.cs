@@ -1,5 +1,4 @@
 ﻿using Bookmarx.Data.v1.Interfaces;
-using Bookmarx.Shared.v1.Bookmarks.Entities;
 using Google.Cloud.Firestore;
 
 namespace Bookmarx.Shared.v1.Membership.Entities;
@@ -18,7 +17,11 @@ public class MemberAccount : IFirebaseEntity
 		string emailAddress,
 		string firstName,
 		DateTime lastLoginDateTimeUTC,
-		string lastName)
+		string lastName,
+		string passwordProtectedPrivateKey,
+		string publicKey,
+		int saltCostFactor,
+		string userSalt)
 	{
 		this.Id = Guid.NewGuid().ToString("N");
 		this.AuthProviderUID = authProviderUID;
@@ -27,6 +30,10 @@ public class MemberAccount : IFirebaseEntity
 		this.FirstName = firstName;
 		this.LastLoginDateTimeUTC = lastLoginDateTimeUTC;
 		this.LastName = lastName;
+		this.PasswordProtectedPrivateKey = passwordProtectedPrivateKey;
+		this.PublicKey = publicKey;
+		this.SaltCostFactor = saltCostFactor;
+		this.UserSalt = userSalt;
 	}
 
 	[FirestoreProperty]
@@ -88,7 +95,19 @@ public class MemberAccount : IFirebaseEntity
 	public List<Order> Orders { get; private set; } = new List<Order>();
 
 	[FirestoreProperty]
+	public string PasswordProtectedPrivateKey { get; set; }
+
+	[FirestoreProperty]
+	public string PublicKey { get; set; }
+
+	[FirestoreProperty]
+	public int SaltCostFactor { get; set; }
+
+	[FirestoreProperty]
 	public List<Subscription> Subscriptions { get; private set; } = new List<Subscription>();
+
+	[FirestoreProperty]
+	public string UserSalt { get; set; }
 
 	public void AddOrder(Order order)
 	{

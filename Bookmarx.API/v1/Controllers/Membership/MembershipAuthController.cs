@@ -31,7 +31,7 @@ public class MembershipAuthController : ControllerBase
 	{
 		var response = new IdentityActionResponseDto();
 
-		if (!string.IsNullOrEmpty(memberAccountCreateRequest?.APID)
+		if (!string.IsNullOrEmpty(memberAccountCreateRequest?.AuthProviderUID)
 			&& !string.IsNullOrEmpty(memberAccountCreateRequest?.EmailAddress))
 		{
 			// Sanitize some stuff
@@ -39,7 +39,7 @@ public class MembershipAuthController : ControllerBase
 
 			var newMember = this._mapper.Map<MemberAccountDto>(memberAccountCreateRequest);
 
-			if (await this._tokenValidatorService.CheckTokenIsValidAndSetIdentityUser(memberAccountCreateRequest.AccessToken, memberAccountCreateRequest.APID))
+			if (await this._tokenValidatorService.CheckTokenIsValidAndSetIdentityUser(memberAccountCreateRequest.AccessToken, memberAccountCreateRequest.AuthProviderUID))
 			{
 				// Finally, create the account
 				var newMemberAccount = await this._authAppService.CreateNewMemberAccountMember(newMember);

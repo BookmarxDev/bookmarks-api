@@ -14,7 +14,6 @@ public class AutoMapperProfile : Profile
 {
 	public AutoMapperProfile()
 	{
-		this.CreateMap<MemberAccountCreateRequest, MemberAccountDto>()
-			.ForMember(mad => mad.AuthProviderUID, macr => macr.MapFrom(m => m.APID));
+		this.CreateMap<MemberAccountCreateRequest, MemberAccountDto>();
 	}
 }

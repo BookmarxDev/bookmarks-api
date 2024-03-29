@@ -38,7 +38,11 @@ public class MembershipAuthAppService : IMembershipAuthAppService
 			memberAccountDto.EmailAddress,
 			memberAccountDto.FirstName,
 			DateTime.UtcNow,
-			memberAccountDto.LastName);
+			memberAccountDto.LastName,
+			memberAccountDto.PasswordProtectedPrivateKey,
+			memberAccountDto.PublicKey,
+			memberAccountDto.SaltCostFactor,
+			memberAccountDto.UserSalt);
 
 		try
 		{
