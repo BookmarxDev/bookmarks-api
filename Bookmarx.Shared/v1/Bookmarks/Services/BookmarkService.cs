@@ -43,10 +43,10 @@ public class BookmarkService : IBookmarkService
 			{
 				bookmarkCollection.DateTimeAddedUTC = DateTime.UtcNow;
 
-				foreach (var bookmark in bookmarkCollection.Bookmarks)
-				{
-					bookmark.DateTimeAddedUTC = DateTime.UtcNow;
-				}
+				//foreach (var bookmark in bookmarkCollection.Bookmarks)
+				//{
+				//	bookmark.DateTimeAddedUTC = DateTime.UtcNow;
+				//}
 			}
 
 			currentMemberAccount.BookmarkCollections = bookmarkCollections;

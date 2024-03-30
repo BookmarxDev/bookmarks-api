@@ -9,4 +9,12 @@ public class MemberAccountDto
 	public string? FirstName { get; set; }
 
 	public string? LastName { get; set; }
+
+	public string PasswordProtectedPrivateKey { get; set; }
+
+	public string PublicKey { get; set; }
+
+	public int SaltCostFactor { get; set; }
+
+	public string UserSalt { get; set; }
 }

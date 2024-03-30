@@ -1,5 +1,6 @@
 using Bookmarx.Data.v1.Providers;
 using Google.Cloud.Firestore;
+using Microsoft.OpenApi.Models;
 
 internal class Program
 {
@@ -26,6 +27,9 @@ internal class Program
 			builder.Host.UseSerilog((context, services, configuration) => configuration
 				.ReadFrom.Configuration(context.Configuration)
 				.ReadFrom.Services(services));
+
+			// Register Sentry APM for error tracking.
+			builder.WebHost.UseSentry();
 
 			// Default ASP.NET DI - Register all custom dependencies in a single location.
 			builder.Services.RegisterCustomDependencies(builder.Configuration);
@@ -78,7 +82,10 @@ internal class Program
 			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 
-			builder.Services.AddSwaggerGen();
+			builder.Services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Bookmarx API", Version = "v1" });
+			});
 
 			builder.Services.AddMemoryCache();
 
@@ -93,7 +100,10 @@ internal class Program
 			if (app.Environment.IsDevelopment())
 			{
 				app.UseSwagger();
-				app.UseSwaggerUI();
+				app.UseSwaggerUI(c =>
+				{
+					c.SwaggerEndpoint("/swagger/v1/swagger.json", "Bookmarx API v1");
+				});
 			}
 
 			app.UseHttpsRedirection();

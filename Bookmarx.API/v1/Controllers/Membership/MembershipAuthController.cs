@@ -31,7 +31,7 @@ public class MembershipAuthController : ControllerBase
 	{
 		var response = new IdentityActionResponseDto();
 
-		if (!string.IsNullOrEmpty(memberAccountCreateRequest?.APID)
+		if (!string.IsNullOrEmpty(memberAccountCreateRequest?.AuthProviderUID)
 			&& !string.IsNullOrEmpty(memberAccountCreateRequest?.EmailAddress))
 		{
 			// Sanitize some stuff
@@ -39,7 +39,7 @@ public class MembershipAuthController : ControllerBase
 
 			var newMember = this._mapper.Map<MemberAccountDto>(memberAccountCreateRequest);
 
-			if (await this._tokenValidatorService.CheckTokenIsValidAndSetIdentityUser(memberAccountCreateRequest.AccessToken, memberAccountCreateRequest.APID))
+			if (await this._tokenValidatorService.CheckTokenIsValidAndSetIdentityUser(memberAccountCreateRequest.AccessToken, memberAccountCreateRequest.AuthProviderUID))
 			{
 				// Finally, create the account
 				var newMemberAccount = await this._authAppService.CreateNewMemberAccountMember(newMember);
@@ -69,6 +69,9 @@ public class MembershipAuthController : ControllerBase
 				if (signedInMemberAccount != null)
 				{
 					identityActionResponseDto.MemberAccountID = signedInMemberAccount?.MemberAccountID;
+					identityActionResponseDto.SaltCostFactor = signedInMemberAccount.SaltCostFactor;
+					identityActionResponseDto.UserSalt = signedInMemberAccount.UserSalt;
+					identityActionResponseDto.PublicKey = signedInMemberAccount.PublicKey;
 
 					// TODO: Swap this out for the new identity user values.
 					identityActionResponseDto.IsSubscriptionValid = this._subscriptionValidationService.ValidateSubscription(signedInMemberAccount);
