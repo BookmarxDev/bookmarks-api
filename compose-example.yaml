@@ -14,10 +14,10 @@ services:
       context: .
       target: final
     ports:
-      - 8000:8000
+      - 5000:5000
     volumes:
       - type: bind
-        source: C:/path/to/your/firebase/configuration
+        source: C:/local/path/to/your/configuration/firebase/
         target: /configuration/firebase/
 
 # The commented out section below is an example of how to define a PostgreSQL

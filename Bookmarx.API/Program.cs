@@ -94,10 +94,6 @@ internal class Program
 
 			RegisterAuthMiddleware(builder);
 
-			// Explicitly register listening url for service.
-			// https://andrewlock.net/8-ways-to-set-the-urls-for-an-aspnetcore-app/
-			builder.WebHost.UseUrls("http://+:8000");
-
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -178,8 +174,7 @@ internal class Program
 		{
 			options.AddPolicy(name: MyAllowSpecificOrigins, options =>
 			{
-				options.WithOrigins("http://+:8000",
-									"http://localhost:4200",
+				options.WithOrigins("http://localhost:4200",
 									"https://localhost:4200",
 									"chrome-extension://kdjpnlhlleemdefjmencigeahhmonhpi",
 									"https://a.stripecdn.com", // All potential stripe FQDNs
