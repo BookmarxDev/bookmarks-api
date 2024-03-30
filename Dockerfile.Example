@@ -60,6 +60,8 @@ ENV ASPNETCORE_HTTP_PORTS=5000
 #ENV ASPNETCORE_HTTPS_PORTS=7000
 
 ENV ASPNETCORE_ENVIRONMENT=Development
+
+# Should match the base path specified in the compose.yaml file.
 ENV GOOGLE_APPLICATION_CREDENTIALS=/configuration/firebase/your-firebase-file.json
 
 ENTRYPOINT ["dotnet", "Bookmarx.API.dll"]
