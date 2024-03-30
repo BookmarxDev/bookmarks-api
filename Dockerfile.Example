@@ -45,8 +45,6 @@ RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine AS final
 WORKDIR /app
 
-EXPOSE 80
-EXPOSE 443
 EXPOSE 5000
 
 # Copy everything needed to run the app from the "build" stage.
@@ -57,6 +55,7 @@ COPY --from=build /app .
 # and https://github.com/dotnet/dotnet-docker/discussions/4764
 USER $APP_UID
 
+# https://learn.microsoft.com/en-us/dotnet/core/compatibility/containers/8.0/aspnet-port
 ENV ASPNETCORE_HTTP_PORTS=5000
 #ENV ASPNETCORE_HTTPS_PORTS=7000
 
