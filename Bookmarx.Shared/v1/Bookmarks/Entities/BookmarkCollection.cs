@@ -11,8 +11,13 @@ public class BookmarkCollection : IFirebaseEntity
 		// Needed for firebase
 	}
 
+	// Not going to be used anymore on the server
+	//[FirestoreProperty]
+	//public List<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
+
+	// A giant blob of JSON that contains all the bookmarks in the collection.
 	[FirestoreProperty]
-	public List<Bookmark> Bookmarks { get; set; } = new List<Bookmark>();
+	public string BookmarksEncryptedJSON { get; set; } = string.Empty;
 
 	[FirestoreProperty]
 	public bool ChildCollectionsCollapsed { get; set; }
@@ -56,4 +61,7 @@ public class BookmarkCollection : IFirebaseEntity
 
 	[FirestoreProperty]
 	public string Title { get; set; }
+
+	[FirestoreProperty]
+	public int TotalBookmarks { get; set; }
 }

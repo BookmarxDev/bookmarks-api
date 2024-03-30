@@ -2,15 +2,21 @@
 
 public class IdentityBaseResponseDto
 {
-    /// <summary>
-    /// Any errors that may be present in the given API call.
-    /// </summary>
-    public List<string> Errors { get; set; } = new List<string>();
+	/// <summary>
+	/// Any errors that may be present in the given API call.
+	/// </summary>
+	public List<string> Errors { get; set; } = new List<string>();
 
-    /// <summary>
-    /// On Log In, Sign Up and once per day we check that the subscription is valid.
-    /// </summary>
-    public bool IsSubscriptionValid { get; set; } = false;
+	/// <summary>
+	/// On Log In, Sign Up and once per day we check that the subscription is valid.
+	/// </summary>
+	public bool IsSubscriptionValid { get; set; } = false;
 
-    public string MemberAccountID { get; set; } = string.Empty;
+	public string MemberAccountID { get; set; } = string.Empty;
+
+	public string PublicKey { get; set; } = string.Empty;
+
+	public int SaltCostFactor { get; set; }
+
+	public string UserSalt { get; set; } = string.Empty;
 }

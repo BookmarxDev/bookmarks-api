@@ -69,6 +69,9 @@ public class MembershipAuthController : ControllerBase
 				if (signedInMemberAccount != null)
 				{
 					identityActionResponseDto.MemberAccountID = signedInMemberAccount?.MemberAccountID;
+					identityActionResponseDto.SaltCostFactor = signedInMemberAccount.SaltCostFactor;
+					identityActionResponseDto.UserSalt = signedInMemberAccount.UserSalt;
+					identityActionResponseDto.PublicKey = signedInMemberAccount.PublicKey;
 
 					// TODO: Swap this out for the new identity user values.
 					identityActionResponseDto.IsSubscriptionValid = this._subscriptionValidationService.ValidateSubscription(signedInMemberAccount);

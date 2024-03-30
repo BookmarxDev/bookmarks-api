@@ -43,18 +43,18 @@ public class BookmarksController : ControllerBase
 	[HttpPost]
 	[Route("sync-bookmarks")]
 	[Consumes("application/json")]
-	public async Task<IActionResult> SyncBookmarks([FromBody] List<BookmarkCollection> bookmarkCollection)
+	public async Task<IActionResult> SyncBookmarks([FromBody] List<BookmarkCollection> bookmarkCollections)
 	{
 		try
 		{
-			await this._bookmarkService.ImportBookmarks(bookmarkCollection);
+			await this._bookmarkService.ImportBookmarks(bookmarkCollections);
 		}
 		catch (Exception ex)
 		{
 			return BadRequest(ex.Message);
 		}
 
-		return Ok(bookmarkCollection);
+		return Ok(bookmarkCollections);
 	}
 
 	//[HttpPost]
