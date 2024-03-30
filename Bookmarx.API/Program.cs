@@ -178,7 +178,7 @@ internal class Program
 		{
 			options.AddPolicy(name: MyAllowSpecificOrigins, options =>
 			{
-				options.WithOrigins("http://+8000",
+				options.WithOrigins("http://+:8000",
 									"http://localhost:4200",
 									"https://localhost:4200",
 									"chrome-extension://kdjpnlhlleemdefjmencigeahhmonhpi",
