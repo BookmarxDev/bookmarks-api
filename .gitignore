@@ -413,3 +413,5 @@ Thumbs.db
 **/appsettings.Staging.json
 **/appsettings.Production.json
 **/launchSettings.json
+**/Dockerfile
+**/compose.yaml
