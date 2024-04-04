@@ -24,3 +24,5 @@ Google Cloud Firestore .NET Client Libraries
 - https://firebase.google.com/docs/firestore/quickstart
 - https://cloud.google.com/dotnet/docs/reference/Google.Cloud.Firestore/latest
 
+Important Docker Notice for ASP.NET Core
+- https://learn.microsoft.com/en-us/dotnet/core/compatibility/containers/8.0/aspnet-port

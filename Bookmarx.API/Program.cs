@@ -106,7 +106,10 @@ internal class Program
 				});
 			}
 
-			app.UseHttpsRedirection();
+			if (!app.Environment.IsDevelopment())
+			{
+				app.UseHttpsRedirection();
+			}
 
 			// See RegisterCorsSettings for details.
 			app.UseCors(MyAllowSpecificOrigins);
