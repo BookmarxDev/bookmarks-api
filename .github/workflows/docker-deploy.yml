@@ -21,8 +21,14 @@ jobs:
         docker build -t bookmarx-api:${{ github.sha }} -f Dockerfile .
         docker push bookmarx-api:${{ github.sha }}
 
+    # Transform the values in the compose.yaml file for targeted release
+
+    # Make a temp folder in the temp folder to store the files to make it easier to move them all at once
+
     # Upload the appropriate .env file to the server in a /tmp directory
+    
     # Upload the firebase json file to the server in a /tmp directory
+    
     # Upload the compose.yaml file to the server in a /tmp directory
 
     # Move the tmp uploaded files to the root container directory
