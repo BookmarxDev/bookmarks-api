@@ -8,6 +8,9 @@
 **/.classpath
 **/.dockerignore
 **/.env
+**/.env.example
+**/.env.staging
+**/.env.production
 **/.git
 **/.gitignore
 **/.project

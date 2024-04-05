@@ -16,31 +16,24 @@
 # docker compose up --build
 # To stop your app, use the following:
 # docker compose down
+# For local development copy this file to compose.local.yaml
 version: '3.7'
 services:
   bookmarks-api:
     build:
       context: .
       target: final
+      dockerfile: Dockerfile
     ports:
       - 5000:5000
     networks:
       - bookmarxnetwork
     volumes:
       - type: bind
-        # C:/Your/Local/Path/To/Configuration/Firebase/
         source: LOCAL_PATH_TO_CONFIGURATION_FIREBASE
-        # /Your/Container/Base/Path/To/Configuration/Firebase/
         target: CONTAINER_BASE_PATH_TO_CONFIGURATION_FIREBASE
-    environment:
-      # Your environment name: Development, Staging, or Production.
-      # This, like a daemon file, is used to determine which appsettings file to use.
-      - ASPNETCORE_ENVIRONMENT=Development
-      - GOOGLE_APPLICATION_CREDENTIALS=CONTAINER_FILE_PATH_TO_CONFIGURATION_FIREBASE
-      # https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration-providers
-      - ConnectionStrings__YourDbName=DB_CONNECTION_STRING
-      - Sentry__Dsn=SENTRY_DSN
-      - GoogleAPIs__FirebaseProjectId=FIREBASE_PROJECT_ID
+    env_file:
+      - DEPLOYMENT_ENV_FILE
 
 networks:
   bookmarxnetwork:

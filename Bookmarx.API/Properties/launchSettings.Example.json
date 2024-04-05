@@ -13,21 +13,22 @@
 			"commandName": "IISExpress",
 			"launchBrowser": true,
 			"launchUrl": "swagger",
+			"applicationUrl": "http://*:5000",
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development",
-				"ASPNETCORE_HTTP_PORTS": "5000",
-				"GOOGLE_APPLICATION_CREDENTIALS": "D:\\Path\\To\\Your\\firebase-adminsdk.json"
+				"GOOGLE_APPLICATION_CREDENTIALS": "\\path\\to\\firebase\\config\\file.json",
+				"ASPNETCORE_HTTP_PORTS": "5000"
 			}
 		},
 		"Bookmarx API": {
 			"commandName": "Project",
 			"launchBrowser": true,
 			"launchUrl": "swagger",
-			"applicationUrl": "http://localhost:8000",
+			"applicationUrl": "http://*:5000",
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development",
-				"ASPNETCORE_HTTP_PORTS": "5000",
-				"GOOGLE_APPLICATION_CREDENTIALS": "D:\\Path\\To\\Your\\firebase-adminsdk.json"
+				"GOOGLE_APPLICATION_CREDENTIALS": "\\path\\to\\firebase\\config\\file.json",
+				"ASPNETCORE_HTTP_PORTS": "5000"
 			}
 		}
 	}
