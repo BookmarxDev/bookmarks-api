@@ -411,5 +411,3 @@ Thumbs.db
 # Config Files
 **/appsettings.json
 **/launchSettings.json
-**/Dockerfile
-**/compose.yaml
