@@ -27,10 +27,10 @@ jobs:
        # Log out from the Docker registry at the end of a job
        logout: true # optional, default is true
 
-    - name: Build and push Docker images
+    - name: Build and push Docker image
       run: |
-        docker build -t bookmarx-api:${{ github.sha }} -f Dockerfile .
-        docker push bookmarx-api:${{ github.sha }}
+        docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/bookmarx-api:${{ github.sha }} -f Dockerfile .
+        docker push ${{ secrets.DOCKER_HUB_USERNAME }}/bookmarx-api:${{ github.sha }}
 
     # Transform the values in the compose.yaml file for targeted release
 
