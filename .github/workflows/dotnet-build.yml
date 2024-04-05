@@ -3,9 +3,7 @@
 
 name: Bookmarx API - Build
 
-on:
-  push:
-    branches: ["main"]
+on: workflow_dispatch
 
 jobs:
   build:
