@@ -59,11 +59,4 @@ USER $APP_UID
 ENV ASPNETCORE_HTTP_PORTS=5000
 #ENV ASPNETCORE_HTTPS_PORTS=7000
 
-# Your environment name: Development, Staging, or Production.
-ENV ASPNETCORE_ENVIRONMENT=DEPLOYMENT_ENVIRONMENT
-
-# Should match the base path specified in the compose.yaml file.
-# /Your/Container/Base/Path/To/Configuration/Firebase/your-firebase-credentials.json
-ENV GOOGLE_APPLICATION_CREDENTIALS=CONTAINER_FILE_PATH_TO_CONFIGURATION_FIREBASE
-
 ENTRYPOINT ["dotnet", "Bookmarx.API.dll"]

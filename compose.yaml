@@ -7,6 +7,15 @@
 # You can add other services your application may depend on here, such as a
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
+# Tips for how to use docker compose.
+# https://docs.docker.com/language/dotnet/containerize/#run-the-application
+# Begin by declaring a network for your containers to talk to each other on.
+# docker network create bookmarxnetwork
+# To use the Docker Compose CLI, navigate to the directory containing your compose.yaml file.
+# Then use the following to build and run your app:
+# docker compose up --build
+# To stop your app, use the following:
+# docker compose down
 version: '3.7'
 services:
   bookmarks-api:
@@ -23,6 +32,15 @@ services:
         source: LOCAL_PATH_TO_CONFIGURATION_FIREBASE
         # /Your/Container/Base/Path/To/Configuration/Firebase/
         target: CONTAINER_BASE_PATH_TO_CONFIGURATION_FIREBASE
+    environment:
+      # Your environment name: Development, Staging, or Production.
+      # This, like a daemon file, is used to determine which appsettings file to use.
+      - ASPNETCORE_ENVIRONMENT=Development
+      - GOOGLE_APPLICATION_CREDENTIALS=CONTAINER_FILE_PATH_TO_CONFIGURATION_FIREBASE
+      # https://learn.microsoft.com/en-us/dotnet/core/extensions/configuration-providers
+      - ConnectionStrings__YourDbName=DB_CONNECTION_STRING
+      - Sentry__Dsn=SENTRY_DSN
+      - GoogleAPIs__FirebaseProjectId=FIREBASE_PROJECT_ID
 
 networks:
   bookmarxnetwork:
