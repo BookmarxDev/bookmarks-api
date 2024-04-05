@@ -1,4 +1,4 @@
-name: Bookmarx API - Deploy Container
+name: API - Staging Deploy
 
 on: workflow_dispatch
 
