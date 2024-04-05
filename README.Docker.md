@@ -1,7 +1,17 @@
 ### Building and running your application
 
 When you're ready, start your application by running:
+[ORIGINAL]
 `docker compose up --build`.
+
+[CUSTOM]
+Local development:
+`docker network create bookmarxnetwork`
+`docker build -t your-app:1.1.0 -f {{environment}}.Dockerfile .`
+`docker compose -f compose.{{environment}}.yaml up -d --no-deps`
+
+Optional push to specific container registry:
+`docker push your-registry-url/your-app:1.1.0`
 
 Your application will be available at http://localhost:5000.
 
@@ -23,5 +33,5 @@ docs for more detail on building and pushing.
 * The [dotnet-docker](https://github.com/dotnet/dotnet-docker/tree/main/samples)
   repository has many relevant samples and docs.
 
-# Bookmarx Setup
-- Be sure to run `docker network create bookmarxnetwork` to create the shared network.
+# Docker Setup
+- https://aschmelyun.com/blog/what-you-should-do-before-deploying-docker-to-production/

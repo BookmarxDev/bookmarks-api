@@ -409,5 +409,6 @@ testem.log
 Thumbs.db
 
 # Config Files
-**/appsettings.json
 **/launchSettings.json
+.env
+compose.*.yaml

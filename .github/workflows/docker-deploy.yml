@@ -3,7 +3,7 @@ name: Bookmarx API - Deploy Container
 on: workflow_dispatch
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,15 +18,27 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-        docker-compose build
-        docker-compose push
+        docker build -t bookmarx-api:${{ github.sha }} -f Dockerfile .
+        docker push bookmarx-api:${{ github.sha }}
 
-    - name: Deploy to server
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        key: ${{ secrets.SERVER_SSH_KEY }}
-        script: |
-          docker-compose pull
-          docker-compose up -d
+    # Transform the values in the compose.yaml file for targeted release
+
+    # Make a temp folder in the temp folder to store the files to make it easier to move them all at once
+
+    # Upload the appropriate .env file to the server in a /tmp directory
+    
+    # Upload the firebase json file to the server in a /tmp directory
+    
+    # Upload the compose.yaml file to the server in a /tmp directory
+
+    # Move the tmp uploaded files to the root container directory
+
+    #- name: Deploy to server
+    #  uses: appleboy/ssh-action@master
+    #  with:
+    #    host: ${{ secrets.SERVER_HOST }}
+    #    username: ${{ secrets.SERVER_USERNAME }}
+    #    key: ${{ secrets.SERVER_SSH_KEY }}
+    #    script: |
+    #      docker compose pull
+    #      docker compose -f ${{ secrets.API_CONTAINER_PATH }}/compose.yaml up -d --no-deps
