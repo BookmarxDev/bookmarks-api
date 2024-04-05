@@ -30,8 +30,8 @@ services:
       - bookmarxnetwork
     volumes:
       - type: bind
-        source: LOCAL_PATH_TO_CONFIGURATION_FIREBASE
-        target: CONTAINER_BASE_PATH_TO_CONFIGURATION_FIREBASE
+        source: LOCAL_FIREBASE_CONFIG_PATH
+        target: CONTAINER_FIREBASE_CONFIG_PATH
     env_file:
       - DEPLOYMENT_ENV_FILE
 
