@@ -1,10 +1,11 @@
-name: Bookmarx API - Deploy Container
+name: API - Staging Deploy
 
 on: workflow_dispatch
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: staging
 
     steps:
     - name: Checkout code
