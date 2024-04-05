@@ -30,7 +30,7 @@ jobs:
     - name: Build and push Docker images
       run: |
         docker build -t bookmarx-api:${{ github.sha }} -f Dockerfile .
-        docker push bookmarxdev/bookmarx-api:${{ github.sha }}
+        docker push bookmarx-api:${{ github.sha }}
 
     # Transform the values in the compose.yaml file for targeted release
 
